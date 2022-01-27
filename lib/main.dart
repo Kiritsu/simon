@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(const SimonGame());
@@ -41,6 +42,11 @@ class _SimonState extends State<Simon> {
   final List<bool> _disabled = [false, false, false, false];
 
   final List<int> _nexts = [];
+
+  Future<AudioPlayer> playLocalAsset(int btn) async {
+    AudioCache cache = AudioCache();
+    return await cache.play("sonsimon" + btn.toString() + ".mp3");
+  }
 
   _restartGame() {
     _nexts.clear();
@@ -87,6 +93,8 @@ class _SimonState extends State<Simon> {
 
   void _press(int btn) {
     if (_protect) return;
+    
+    playLocalAsset(btn);
 
     if (btn != _nexts[_index]) {
       _restartGame();
