@@ -14,7 +14,7 @@ class SimonGame extends StatelessWidget {
     return MaterialApp(
       title: 'Simon',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.pink,
       ),
       home: const Simon(title: 'Simon'),
     );
@@ -114,6 +114,7 @@ class _SimonState extends State<Simon> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red)),
                 onPressed: _allDisabled || _disabled[0] ? null : () => _press(0),
                 child: const Text('^')
             ),
@@ -121,6 +122,7 @@ class _SimonState extends State<Simon> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)),
                     onPressed: _allDisabled || _disabled[1] ? null : () => _press(1),
                     child: const Text('>')
                 ),
@@ -137,12 +139,14 @@ class _SimonState extends State<Simon> {
                   ],
                 ),
                 ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green)),
                     onPressed: _allDisabled || _disabled[2] ? null : () => _press(2),
                     child: const Text('<')
                 )
               ],
             ),
             ElevatedButton(
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow)),
                 onPressed: _allDisabled || _disabled[3] ? null : () => _press(3),
                 child: const Text('v')
             ),
